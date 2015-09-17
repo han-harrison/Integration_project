@@ -1,0 +1,91 @@
+/* nag_multid_quad_adapt_1 (d01wcc) Example Program.
+ *
+ * Copyright 2014 Numerical Algorithms Group.
+ *
+ * Mark 5, 1998.
+ * Mark 7 revised, 2001.
+ *
+ */
+
+#include <nag.h>
+#include <stdio.h>
+#include <nag_stdlib.h>
+#include <math.h>
+#include <nagd01.h>
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+static double NAG_CALL f(Integer n, const double z[], Nag_User *comm);
+#ifdef __cplusplus
+}
+#endif
+
+#define NDIM   4
+#define MAXPTS 1000*NDIM
+
+int main(void)
+{
+  static Integer use_comm[1] = {1};
+  Integer  exit_status = 0;
+  Integer  ndim = NDIM;
+  Integer  maxpts = MAXPTS;
+  double   a[4], b[4];
+  Integer  k;
+  double   finval;
+  Integer  minpts;
+  double   acc, eps;
+  Nag_User comm;
+  NagError fail;
+
+  INIT_FAIL(fail);
+
+  printf("nag_multid_quad_adapt_1 (d01wcc) Example Program Results\n");
+
+  /* For communication with user-supplied functions: */
+  comm.p = (Pointer)&use_comm;
+
+  for (k = 0; k < 4; ++k)
+    {
+      a[k] = 0.0;
+      b[k] = 1.0;
+    }
+  eps = 0.0001;
+  minpts = 0;
+
+  /* nag_multid_quad_adapt_1 (d01wcc).
+   * Multi-dimensional adaptive quadrature, thread-safe
+   */
+  nag_multid_quad_adapt_1(ndim, f, a, b, &minpts, maxpts, eps, &finval, &acc,
+                          &comm, &fail);
+
+  if (fail.code != NE_NOERROR && fail.code != NE_QUAD_MAX_INTEGRAND_EVAL)
+    {
+      printf("Error from nag_multid_quad_adapt_1 (d01wcc) %s\n",
+              fail.message);
+      exit_status = 1;
+      goto END;
+    }
+  printf("Requested accuracy =%12.2e\n", eps);
+  printf("Estimated value    =%12.4f\n", finval);
+  printf("Estimated accuracy =%12.2e\n", acc);
+
+ END:
+  return exit_status;
+}
+
+
+static double NAG_CALL f(Integer n, const double z[], Nag_User *comm)
+{
+  double tmp_pwr;
+  Integer *use_comm = (Integer *)comm->p;
+
+  if (use_comm[0])
+    {
+      printf("(User-supplied callback f, first invocation.)\n");
+      use_comm[0] = 0;
+    }
+
+  tmp_pwr = z[1]+1.0+z[n-1];
+  return z[0]*4.0*z[2]*z[2]*exp(z[0]*2.0*z[2])/(tmp_pwr*tmp_pwr);
+}
