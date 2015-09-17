@@ -1,5 +1,5 @@
 /* nag_1d_quad_gen_1 (d01sjc) Example Program.
- *
+ *http://www.nag.co.uk/numeric/cl/nagdoc_cl25/html/d01/d01sjc.html (url for specification webpage)
  * Copyright 2014 Numerical Algorithms Group.
  *
  * Mark 5, 1998.
