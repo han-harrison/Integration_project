@@ -6,6 +6,10 @@
 #gcc -m32 gfw_pol.c -I/home/harrisonh/Code/cll6i24dcl/include -L/home/harrisonh/Code/cll6i24dcl/lib -lnagc_nag -lm -lpthread
 
 # 64 bit version
+export NAG_KUSARI_FILE=/home/harrisonh/Code/cll6i24dcl/license/bin/linux_x64/nag_key
+ 
+export LD_LIBRARY_PATH=/home/harrisonh/Code/cll6i24dcl/lib:/home/harrisonh/Code/cll6i24dcl/mkl_11.1.1/lib/intel64:/home/harrisonh/Code/cll6i24dcl/rtl/intel64
+ 
 gcc d01sjc_example.c -I/home/harrisonh/Code/cll6i24dcl/include -L/home/harrisonh/Code/cll6i24dcl/lib -lnagc_nag -lm -lpthread
 #-lpthread
 
