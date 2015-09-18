@@ -6,7 +6,7 @@
 #gcc -m32 gfw_pol.c -I/home/harrisonh/Code/cll6i24dcl/include -L/home/harrisonh/Code/cll6i24dcl/lib -lnagc_nag -lm -lpthread
 
 # 64 bit version
-gcc gfw_pol_working.c -I/home/harrisonh/Code/cll6i24dcl/include -L/home/harrisonh/Code/cll6i24dcl/lib -lnagc_nag -lm -lpthread
+gcc d01sjc_example.c -I/home/harrisonh/Code/cll6i24dcl/include -L/home/harrisonh/Code/cll6i24dcl/lib -lnagc_nag -lm -lpthread
 #-lpthread
 
 
