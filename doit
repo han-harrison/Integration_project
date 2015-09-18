@@ -1,0 +1,15 @@
+#gcc gfw_pol.c -I/home/harrisonh/Code/cll6i24dcl/include -L/usr/local/lib -lnagc -lm
+#gcc gfw_pol.c -I/home/harrisonh/Code/cll6i24dcl/include -L/home/harrisonh/Code/cll6i24dcl/ -lnagc -lm
+#gcc -m32 gfw_pol.c -I/system/sl4/NAG/cllux08dgl/include -L/system/sl4/NAG/cllux08dgl/lib/ -lnagc_nag -lm
+
+# 32 bit version
+#gcc -m32 gfw_pol.c -I/home/harrisonh/Code/cll6i24dcl/include -L/home/harrisonh/Code/cll6i24dcl/lib -lnagc_nag -lm -lpthread
+
+# 64 bit version
+gcc gfw_pol_working.c -I/home/harrisonh/Code/cll6i24dcl/include -L/home/harrisonh/Code/cll6i24dcl/lib -lnagc_nag -lm -lpthread
+#-lpthread
+
+
+# 32 bit version (mark 8 libs)
+#gcc -m32 gfw_pol_sawtooth_version.c -I/system/SL5/NAG/cllux08dgl/include -L/system/SL5/NAG/cllux08dgl/lib/ -lnagc_nag -lm 
+
